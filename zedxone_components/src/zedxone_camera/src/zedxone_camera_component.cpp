@@ -112,7 +112,7 @@ ZedXOneCamera::ZedXOneCamera(const rclcpp::NodeOptions & options)
 
   // ----> Create publishers
   RCLCPP_INFO(get_logger(), "*** Publishers ***");
-  _pubImgTransp = image_transport::create_publisher(this, "image", _qos.get_rmw_qos_profile());
+  _pubImgTransp = image_transport::create_publisher(this, std::string(this->get_name()) + "/image", _qos.get_rmw_qos_profile());
   RCLCPP_INFO_STREAM(get_logger(), "Advertised on topic: " << _pubImgTransp.getTopic());
   // <---- Create publishers
 
